@@ -1,6 +1,6 @@
 msv:
   customer:
-    property: msv-customer-dev
+    property: msv-customer-dev update
 spring:
   banner:
     location: classpath:banner/banner-dev.txt
