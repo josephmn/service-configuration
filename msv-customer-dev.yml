@@ -1,6 +1,6 @@
 msv:
   customer:
-    property: msv-customer-dev update
+    property: msv-customer-dev
 spring:
   banner:
     location: classpath:banner/banner-dev.txt
@@ -16,3 +16,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+logging:
+  level:
+    root: WARN
+    #root: DEBUG

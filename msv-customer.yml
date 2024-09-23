@@ -1,0 +1,21 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: msv-customer
+    version: "@project.version@"
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bank
+    username: banking
+    password: banking123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+logging:
+  level:
+    root: WARN
