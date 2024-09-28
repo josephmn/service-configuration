@@ -1,0 +1,7 @@
+msv:
+  discovery-service:
+    property: discovery-service-prod
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
