@@ -2,7 +2,7 @@ msv:
   customer:
     property: msv-customer-prod
 server:
-  port: 0
+  port: 9010
 spring:
   banner:
     location: classpath:banner/banner-prod.txt
