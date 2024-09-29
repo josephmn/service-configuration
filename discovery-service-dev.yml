@@ -1,7 +1,15 @@
 msv:
   discovery-service:
     property: discovery-service-dev
+server:
+  port: 8890
+spring:
+  application:
+    name: discovery-service
 eureka:
+  instance:
+    hostname: localhost  # O el nombre de host que prefieras
+    prefer-ip-address: true  # O false, si prefieres que utilice el nombre de host
   client:
     register-with-eureka: false
     fetch-registry: false
