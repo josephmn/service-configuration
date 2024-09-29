@@ -1,6 +1,8 @@
 msv:
   customer:
     property: msv-customer-prod
+server:
+  port: 0
 spring:
   banner:
     location: classpath:banner/banner-prod.txt
@@ -16,6 +18,12 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8890
+  instance:
+    instance-id: ${msv.customer.property}:${random.uuid}
 logging:
   level:
     root: WARN
