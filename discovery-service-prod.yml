@@ -2,14 +2,16 @@ msv:
   discovery-service:
     property: discovery-service-prod
 server:
-  port: 8890
+  port: 8761
 spring:
   application:
     name: discovery-service
 eureka:
   instance:
     hostname: localhost  # O el nombre de host que prefieras
-    prefer-ip-address: true  # O false, si prefieres que utilice el nombre de host
+    prefer-ip-address: false  # O false, si prefieres que utilice el nombre de host
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}

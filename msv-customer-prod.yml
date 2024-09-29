@@ -19,9 +19,6 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8890
   instance:
     instance-id: ${msv.customer.property}:${random.uuid}
 logging:
