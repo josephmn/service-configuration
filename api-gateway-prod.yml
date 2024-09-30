@@ -1,6 +1,5 @@
 msv:
-  api-gateway:
-    property: api-gateway-prod
+  name: api-gateway-prod
 server:
   port: 8090
 spring:
@@ -20,8 +19,15 @@ spring:
   #    reactor.netty.http.client: DEBUG
   #    org.springframework.web: DEBUG
 eureka:
+  server:
+    port: 8761
   instance:
-    instance-id: ${spring.application.name}:${random.uuid}
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
+    prefer-ip-address: false
+    instance-id: ${msv.name}:${random.uuid}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
 logging:
   level:
     root: WARN

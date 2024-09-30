@@ -1,6 +1,5 @@
 msv:
-  customer:
-    property: msv-customer-prod
+  name: msv-customer-prod
 server:
   port: 9010
 spring:
@@ -19,8 +18,15 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 eureka:
+  server:
+    port: 8761
   instance:
-    instance-id: ${msv.customer.property}:${random.uuid}
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
+    prefer-ip-address: false
+    instance-id: ${msv.name}:${random.uuid}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
 logging:
   level:
     root: WARN
