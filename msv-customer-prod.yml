@@ -1,8 +1,9 @@
-msv:
-  name: msv-customer-prod
 server:
-  port: 9010
+  # port: 0 for management eureka multi instance
+  port: 0
 spring:
+  application:
+    name: msv-customer-lb
   banner:
     location: classpath:banner/banner-prod.txt
   datasource:
@@ -18,15 +19,15 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 eureka:
-  server:
-    port: 8761
+#  server:
+#    port: 8761
   instance:
-    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
-    prefer-ip-address: false
-    instance-id: ${msv.name}:${random.uuid}
-  client:
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
+#    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
+#    prefer-ip-address: false
+    instance-id: ${spring.application.name}:${random.uuid}
+#  client:
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
 logging:
   level:
     root: WARN

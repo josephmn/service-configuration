@@ -1,8 +1,8 @@
-msv:
-  name: api-gateway-prod
 server:
   port: 8090
 spring:
+  application:
+    name: api-gateway
   banner:
     location: classpath:banner/banner-prod.txt
   # customer
@@ -10,7 +10,9 @@ spring:
     gateway:
       routes:
         - id: msv-customer
-          uri: http://localhost:9010
+          # uri: http://localhost:9010
+          # "msv-customer-lb" is name instance-id: ${spring.application.name} of microservice customer - line 5
+          uri: lb://msv-customer-lb
           predicates:
             - Path=/api/v1/customers/**
   #logging:
@@ -19,15 +21,15 @@ spring:
   #    reactor.netty.http.client: DEBUG
   #    org.springframework.web: DEBUG
 eureka:
-  server:
-    port: 8761
+#  server:
+#    port: 8761
   instance:
-    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
-    prefer-ip-address: false
-    instance-id: ${msv.name}:${random.uuid}
-  client:
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
+#    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
+#    prefer-ip-address: false
+    instance-id: ${spring.application.name}:${random.uuid}
+#  client:
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
 logging:
   level:
     root: WARN
