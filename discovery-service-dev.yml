@@ -2,7 +2,7 @@ msv:
   discovery-service:
     property: discovery-service-dev
 server:
-  port: 8890
+  port: 8761
 spring:
   application:
     name: discovery-service
