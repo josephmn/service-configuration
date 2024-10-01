@@ -1,0 +1,7 @@
+HELP.md
+
+### IntelliJ IDEA ###
+.idea
+*.json
+### VS Code ###
+.vscode/
