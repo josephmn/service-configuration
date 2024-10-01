@@ -9,17 +9,21 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: msv-customer
+        - id: msv-customer-CustomerController
           # uri: http://localhost:9010
           # "msv-customer-lb" is name instance-id: ${spring.application.name} of microservice customer - line 5
           uri: lb://msv-customer-lb
           predicates:
             - Path=/api/v1/customers/**
-  #logging:
-  #  level:
-  #    org.springframework.cloud.gateway: DEBUG
-  #    reactor.netty.http.client: DEBUG
-  #    org.springframework.web: DEBUG
+        - id: msv-customer-TestController
+          uri: lb://msv-customer-lb
+          predicates:
+            - Path=/api/v1/test/**
+#  logging:
+#    level:
+#      org.springframework.cloud.gateway: DEBUG
+#      reactor.netty.http.client: DEBUG
+#      org.springframework.web: DEBUG
 eureka:
 #  server:
 #    port: 8761

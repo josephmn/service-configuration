@@ -31,3 +31,6 @@ eureka:
 logging:
   level:
     root: WARN
+test:
+  property:
+    variable: Property of customer test
