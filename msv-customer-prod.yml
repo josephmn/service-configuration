@@ -6,11 +6,17 @@ spring:
     name: msv-customer-lb
   banner:
     location: classpath:banner/banner-prod.txt
+#  cloud:
+#    vault:
+#      application-name: msv-customer
+#      host: localhost
+#      port: 8200
+#      scheme: http
+#      authentication: TOKEN
+#      token: 00000000-0000-0000-0000-000000000000
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/bank
-    username: banking
-    password: banking123
   jpa:
     hibernate:
       ddl-auto: update
