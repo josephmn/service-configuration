@@ -19,6 +19,10 @@ spring:
           uri: lb://msv-customer-lb
           predicates:
             - Path=/api/v1/test/**
+        - id: msv-wikimedia-WikimediaController
+          uri: lb://msv-wikimedia-produce-lb
+          predicates:
+            - Path=/api/v1/wikimedia/**
 #  logging:
 #    level:
 #      org.springframework.cloud.gateway: DEBUG
