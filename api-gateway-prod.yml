@@ -7,6 +7,9 @@ spring:
     location: classpath:banner/banner-prod.txt
   # customer
   cloud:
+    loadbalancer:
+      cache:
+        enabled: false
     gateway:
       routes:
         - id: msv-customer-CustomerController
