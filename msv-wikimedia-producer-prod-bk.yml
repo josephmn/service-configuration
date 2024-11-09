@@ -12,12 +12,9 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       # value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-# Habilitar para cundo necesites revisar traza en consola, para Produccion, tener habilitado el WARN o ERROR
-#logging:
-#  level:
-#    root: TRACE   # Máximo detalle de logs
-#    root: DEBUG   # Detalles de depuración
-#    root: INFO    # Información general
-#    root: WARN    # Advertencias
-#    root: ERROR   # Errores
-#    root: OFF     # Sin logs
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+logging:
+  level:
+    root: WARN
