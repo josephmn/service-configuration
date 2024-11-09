@@ -22,7 +22,7 @@ spring:
           uri: lb://msv-customer-lb
           predicates:
             - Path=/api/v1/test/**
-        - id: msv-wikimedia-WikimediaController
+        - id: msv-wikimedia-producer
           uri: lb://msv-wikimedia-produce-lb
           predicates:
             - Path=/api/v1/wikimedia/**
@@ -40,7 +40,10 @@ eureka:
     instance-id: ${spring.application.name}:${random.uuid}
 #  client:
 #    service-url:
-#      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
+#      # defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
+#      defaultZone: ${CONFIG_EUREKA:http://localhost:8761}
+#      fetch-registry: true
+#      register-with-eureka: true
 logging:
   level:
     root: WARN
