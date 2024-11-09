@@ -6,9 +6,9 @@ server:
 spring:
   application:
     name: discovery-service
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-  instance:
-    hostname: localhost  # Nombre del host para el Discovery Server
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#  instance:
+#    hostname: localhost  # Nombre del host para el Discovery Server
