@@ -1,5 +1,23 @@
 server:
   port: 8090
+security:
+  private-paths: # Rutas privadas para APIS (con JWT)
+    - route: customer-service # Identificador del msv o api
+      path: /api/v1/customers/** # Url donde resuelve el API
+      url: lb://msv-customer-lb # Nombre del servicio registrado en Eureka Server
+  public-paths: # Rutas públicas para APIS (sin JWT)
+    - /api/v1/customers/**
+    - /actuator/**
+    - /v3/api-docs/**
+    - /swagger-ui/**
+    - /swagger-ui.html
+    - /webjars/**
+    - /index.html
+    - /swagger-resources/**
+    - /favicon.ico
+    - /auth/**
+    - /login
+    - /register
 spring:
   application:
     name: api-gateway
@@ -10,21 +28,33 @@ spring:
 #      cache:
 #        enabled: false
     gateway:
-      routes:
-        - id: msv-customer-CustomerController
-          # uri: http://localhost:9010
-          # "msv-customer-lb" is name instance-id: ${spring.application.name} of microservice customer - line 5
-          uri: lb://msv-customer-lb
-          predicates:
-            - Path=/api/v1/customers/**
-        - id: msv-customer-TestController
-          uri: lb://msv-customer-lb
-          predicates:
-            - Path=/api/v1/test/**
-        - id: msv-wikimedia-producer
-          uri: lb://msv-wikimedia-produce-lb
-          predicates:
-            - Path=/api/v1/wikimedia/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            exposedHeaders:
+              - Authorization
+              - Content-Type
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /index.html
+    enabled: true
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: API Gateway
+        primaryName: API Gateway
 logging:
   level:
-    root: WARN
+#    root: WARN
+    org.springframework.cloud.gateway: DEBUG
+    api.azure.api_gateway: DEBUG
+    org.springframework.security: DEBUG
