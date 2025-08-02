@@ -1,0 +1,40 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: student
+    version: "@project.version@"
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui/index.html
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+openapi:
+  info:
+    title: Student API - Prod
+    github:
+      url: https://github.com/josephmn/student.git
+      definition: https://github.com/josephmn/student/blob/main/src/main/resources/openapi.yaml
+    terms: http://swagger.io/terms/
+    contact:
+      name: Joseph Magallanes
+      email: josephcarlos.jcmn@gmail.com
+      url: https://www.linkedin.com/in/joseph-magallanes-nolazco/
+    servers:
+      url: http://localhost:${server.port}
+      description: Local server Swagger
+logging:
+  level:
+    root: INFO
+#logging:
+#  level:
+#    com.maven.student: DEBUG
+#    org.springframework.security: DEBUG
+#    org.springframework.web: DEBUG
+#    org.springframework.r2dbc: DEBUG
+#    io.r2dbc.mysql: DEBUG
+#    root: INFO
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
