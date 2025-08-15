@@ -1,8 +1,8 @@
 msv:
   discovery-service:
-    property: discovery-service-dev
+    property: discovery-service-cert
 server:
-  port: 8759
+  port: 8760
 spring:
   application:
     name: discovery-service

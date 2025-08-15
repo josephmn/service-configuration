@@ -7,8 +7,9 @@ spring:
   application:
     name: discovery-service
 #eureka:
+#  instance:
+#    hostname: localhost  # Nombre del host para el Discovery Server
+#    prefer-ip-address: true  # O false, si prefieres que utilice el nombre de host
 #  client:
 #    register-with-eureka: false
 #    fetch-registry: false
-#  instance:
-#    hostname: localhost  # Nombre del host para el Discovery Server
