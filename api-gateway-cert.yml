@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8091
 security:
   private-paths: # Rutas privadas para APIS (con JWT)
     - route: customer-service # Identificador del msv o api
