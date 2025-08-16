@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: msv-customer-lb
-  banner:
-    location: classpath:banner/banner-prod.txt
 #  cloud:
 #    vault:
 #      application-name: msv-customer
@@ -31,6 +29,10 @@ eureka:
 #    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
 #    prefer-ip-address: false
     instance-id: ${spring.application.name}:${random.uuid}
+    metadata-map:
+      environment: ${SPRING_PROFILES_ACTIVE:dev}
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 3
 #  client:
 #    service-url:
 #      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}
