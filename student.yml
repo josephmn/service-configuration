@@ -1,8 +1,26 @@
 server:
-  port: 0
+  port: 8082
 spring:
   application:
-    name: student-lb
+    name: student
+  banner:
+    location: classpath:banner/banner-${SPRING_PROFILES_ACTIVE}.txt
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER:http://localhost:8888}
+    vault:
+      enabled: true
+      host: ${VAULT_HOST:localhost}
+      port: ${VAULT_PORT:8200}
+      scheme: http
+      authentication: TOKEN
+      token: 00000000-0000-0000-0000-000000000000
+      kv:
+        enabled: true
+        backend: secret
+  output:
+    ansi:
+      enabled: ALWAYS
 springdoc:
   swagger-ui:
     enabled: true
@@ -11,6 +29,11 @@ springdoc:
     enabled: true
     path: /v3/api-docs
 eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
     metadata-map:
@@ -29,7 +52,7 @@ openapi:
       email: josephcarlos.jcmn@gmail.com
       url: https://www.linkedin.com/in/joseph-magallanes-nolazco/
     servers:
-      url: http://localhost:${API_GATEWAY_PORT:server.port}
+      url: http://localhost:${server.port}
       description: Local server Swagger
 logging:
   level:

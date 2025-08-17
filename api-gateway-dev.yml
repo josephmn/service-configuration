@@ -5,8 +5,12 @@ security:
     - route: customer-service # Identificador del msv o api
       path: /api/v1/customers/** # Url donde resuelve el API
       url: lb://msv-customer-lb # Nombre del servicio registrado en Eureka Server
+    - route: student
+      path: /api/v1/students/**
+      url: lb://student-lb
   public-paths: # Rutas públicas para APIS (sin JWT)
     - /api/v1/customers/**
+    - /api/v1/students/**
     - /actuator/**
     - /v3/api-docs/**
     - /swagger-ui/**
@@ -50,9 +54,10 @@ springdoc:
       - url: /v3/api-docs
         name: API Gateway
         primaryName: API Gateway
+  show-actuator: true
 logging:
   level:
-#    root: WARN
+    # root: WARN
     org.springframework.cloud.gateway: DEBUG
-    api.azure.api_gateway: DEBUG
+    api.azure.apigateway: DEBUG
     org.springframework.security: DEBUG
