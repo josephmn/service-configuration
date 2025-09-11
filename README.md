@@ -22,3 +22,14 @@ vault kv put secret/student/dev @student-dev.json
 vault kv put secret/student/cert @student-dev.json
 vault kv put secret/student/prod @student-prod.json
 ```
+
+## Upload-secrets.sh
+Se creo un *.sh para detectar los archivos *.json y cargarlos de manera mavisa en vault
+- Ejecutar comandos previos para birndar acceso al script:
+    ```bash
+    chmod +x upload-secrets.sh
+    ```
+- Luego para ejecutarlo (debes estar dentro de la ruta service-configuration para ejecutar, al igual que deben estar creados los archivo *.json):
+    ```bash
+    ./upload-secrets.sh
+    ```
