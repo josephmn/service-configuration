@@ -57,7 +57,7 @@ springdoc:
   show-actuator: true
 logging:
   level:
-    root: DEBUG
+    root: INFO
     # org.springframework.cloud.gateway: DEBUG
     # api.azure.apigateway: DEBUG
     # org.springframework.security: DEBUG
