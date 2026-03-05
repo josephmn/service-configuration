@@ -1,0 +1,63 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: msv-maven-student
+    version: "@project.version@"
+  # profiles:
+  #   active: prod
+  # banner:
+  #   location: classpath:banner/banner-${spring.profiles.active}.txt
+  # cloud:
+  #   vault:
+  #     enabled: true
+  #     host: ${VAULT_HOST:localhost}
+  #     port: ${VAULT_PORT:8200}
+  #     scheme: http
+  #     authentication: APPROLE
+  #     app-role:
+  #       role-id: ${VAULT_ROLE_ID}
+  #       secret-id: ${VAULT_SECRET_ID}
+  #     kv:
+  #       enabled: true
+  #       backend: secret
+  r2dbc:
+    url: ${MYSQL_HOST}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+  output:
+    ansi:
+      enabled: ALWAYS
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui/index.html
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 120000 # 2 minutes in milliseconds
+azure:
+  servicebus:
+    connection-string: ${SERVICE_BUS_STRING}
+    topic-name: ${SERVICE_BUS_TOPIC_NAME}
+    subscription-name: ${SERVICE_BUS_SUBSCRIPTION_NAME}
+    namespace: ${SERVICE_BUS_NAMESPACE}
+
+openapi:
+  info:
+    github:
+      url: https://github.com/josephmn/msv-maven-student.git
+      definition: https://github.com/josephmn/msv-maven-student/blob/main/src/main/resources/openapi.yaml
+    terms: http://swagger.io/terms/
+    contact:
+      name: Joseph Magallanes
+      email: developer.senior@example.pe
+      url: https://www.linkedin.com/in/joseph-magallanes-nolazco/
+    servers:
+      url: http://localhost:${server.port}
+      description: Local server Swagger
+logging:
+  level:
+    root: INFO
