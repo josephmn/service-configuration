@@ -38,7 +38,8 @@ springdoc:
 jwt:
   secret: ${JWT_SECRET}
   #expiration: 120000 # 2 minutes in milliseconds
-  expiration: 3600000 # 1 hora in milliseconds
+  expiration: 1800000 # 30 minutes in milliseconds
+  #expiration: 3600000 # 1 hora in milliseconds
 azure:
   servicebus:
     connection-string: ${SERVICE_BUS_STRING}
